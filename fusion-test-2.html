@@ -5,10 +5,10 @@
 <title>Merged_POI_2015_Fusion_Copy - Google Fusion Tables</title>
 <style type="text/css">
 html, body, #mapCanvas {
-  height: 80%;
+  height: 800PX;
   margin: 0;
   padding: 0;
-  width: 80%;
+  width: 600PX;
 }
 </style>
 
@@ -28,7 +28,7 @@ html, body, #mapCanvas {
     mapDiv.style.height = isMobile ? '100%' : '3000px';
     var map = new google.maps.Map(mapDiv, {
       center: new google.maps.LatLng(38.8332499999783,-83.5184300004163),
-      zoom: 11,
+      zoom: 8,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend-open'));
