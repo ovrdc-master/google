@@ -28,7 +28,7 @@ html, body, #mapCanvas {
     mapDiv.style.height = isMobile ? '100%' : '3000px';
     var map = new google.maps.Map(mapDiv, {
       center: new google.maps.LatLng(38.8332499999783,-83.5184300004163),
-      zoom: 12,
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend-open'));
