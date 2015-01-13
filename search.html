@@ -183,8 +183,7 @@ function initialize() {
   // Load a GeoJSON from the same server.
   map.data.loadGeoJson('cc-trails.geojson');
   
-  // global infowindow
-  var infowindow = new google.maps.InfoWindow();
+
 
   // When the user clicks, open an infowindow
   map.data.addListener('click', function(event) {
