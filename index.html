@@ -13,22 +13,22 @@
   // Create an array of styles.
   var styles =   [
     {
+      featureType: "all",
       stylers: [
-        { hue: '#00ffe6' },
-        { saturation: -20 }
+        { saturation: -80 }
       ]
     },{
-      featureType: 'road',
+      featureType: 'road.arterial',
       elementType: 'geometry',
       stylers: [
-        { lightness: 100 },
-        { visibility: 'simplified' }
+        { hue: "#00ffee"},
+        { saturation: 50 }
       ]
     },{
       featureType: 'road',
       elementType: 'labels',
       stylers: [
-        { visibility: 'off' }
+        { visibility: 'on' }
       ]
     }
   ];
