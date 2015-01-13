@@ -81,26 +81,7 @@ function initialize() {
     center: {lat: 39.6, lng: -82.6}
   });
 
-  // Load GeoJSON.
-  map.data.loadGeoJson('cc-trails.json');
-
-  // Add some style.
-  map.data.setStyle(function(feature) {
-    return /** @type {google.maps.Data.StyleOptions} */({
-      fillColor: feature.getProperty('color'),
-      strokeWeight: 1
-    });
-  });
-
-  // [START snippet]
-  // Set mouseover event for each feature.
-  map.data.addListener('mouseover', function(event) {
-    document.getElementById('info-box').textContent =
-        event.feature.getProperty('Name');
-  });
-  // [END snippet]
-  
-    // Create the search box and link it to the UI element.
+ // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
       document.getElementById('pac-input'));
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
@@ -156,6 +137,27 @@ function initialize() {
     var bounds = map.getBounds();
     searchBox.setBounds(bounds);
   });
+
+  // Load GeoJSON.
+  map.data.loadGeoJson('cc-trails.json');
+
+  // Add some style.
+  map.data.setStyle(function(feature) {
+    return /** @type {google.maps.Data.StyleOptions} */({
+      fillColor: feature.getProperty('color'),
+      strokeWeight: 1
+    });
+  });
+
+  // [START snippet]
+  // Set mouseover event for each feature.
+  map.data.addListener('mouseover', function(event) {
+    document.getElementById('info-box').textContent =
+        event.feature.getProperty('Name');
+  });
+  // [END snippet]
+  
+   
   
 }
 
