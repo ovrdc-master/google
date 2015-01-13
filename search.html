@@ -53,26 +53,7 @@
         font-size: 13px;
         font-weight: 300;
       }
-      
-      #info-box {
-      background-color: white;
-      border: 1px solid transparent;
-      border-radius: 2px 0 0 2px;
-      box-sizing: border-box;
-        -moz-box-sizing: border-box;
-      outline: none;  
-      top: 40px;
-      height: 30px;
-      padding: 3px;
-      position: absolute;
-      right: 6px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      font-family: Roboto;
-      font-size: 14px;
-      font-weight: 300;
-    }
-      
-}
+
 
     </style>
     <title>Places search box</title>
@@ -142,17 +123,6 @@ function initialize() {
   map.mapTypes.set('styled_maps', styledMapType);
   map.setMapTypeId('styled_maps');
   
-  // Load a GeoJSON from the same server.
-  map.data.loadGeoJson('cc-trails.json');
-  
-  // [START snippet]
-  // Set mouseover event for each feature.
-  map.data.addListener('mouseover', function(event) {
-    document.getElementById('info-box').textContent =
-        event.feature.getProperty('Name');
-  });
-  // [END snippet]
-
   // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
       document.getElementById('pac-input'));
@@ -209,6 +179,9 @@ function initialize() {
     var bounds = map.getBounds();
     searchBox.setBounds(bounds);
   });
+  
+  // Load a GeoJSON from the same server.
+  map.data.loadGeoJson('cc-trails.json');
   
 }
 
