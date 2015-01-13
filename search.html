@@ -194,7 +194,7 @@ function initialize() {
   //listen for click events
 	map.data.addListener('click', function(event) {
 	//show an infowindow on click   
-	infoWindow.setContent('<div style="line-height:1.35;overflow:hidden;white-space:nowrap;">
+	infoWindow.setContent('<div style="line-height:1.35;overflow:hidden;white-space:nowrap;">' +
 		event.feature.getId()event.feature.getProperty("Name") + "</div>");
 		var anchor = new google.maps.MVCObject();
 		anchor.set("position",event.latLng);
