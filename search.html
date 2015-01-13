@@ -63,7 +63,9 @@
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
 //info window
-var infowindow = new google.maps.InfoWindow();
+var = infoWindow = new google.maps.InfoWindow({
+		      content: ""
+		  	});
 
 function initialize() {
 
@@ -186,17 +188,18 @@ function initialize() {
     searchBox.setBounds(bounds);
   });
   
-  // When the user clicks, open an infowindow
-  map.data.addListener('click', function(event) {
-      var myHTML = event.feature.getProperty("Name");
-      infowindow.setContent("<div style='width:auto; height:auto; text-align: center;'>"+myHTML+"</div>");
-      infowindow.setPosition(event.feature.getGeometry().get());
-      infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
-      infowindow.open(map);
-  });
-
   // Load a GeoJSON from the same server.
   map.data.loadGeoJson('cc-trails.geojson');
+
+  //listen for click events
+	map.data.addListener('click', function(event) {
+	//show an infowindow on click   
+	infoWindow.setContent('<div style="line-height:1.35;overflow:hidden;white-space:nowrap;">
+		event.feature.getId()event.feature.getProperty("Name") + "</div>");
+		var anchor = new google.maps.MVCObject();
+		anchor.set("position",event.latLng);
+		infoWindow.open(map,anchor);
+	});
   
 }
 
