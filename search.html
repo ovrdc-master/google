@@ -196,9 +196,9 @@ function initialize() {
   map.data.loadGeoJson('cc-trails.geojson');
   
     // Set mouseover event for each feature.
-  map.data.addListener('click', function(event) {
+  map.data.addListener('mouseover', function(event) {
     document.getElementById('info-box').textContent =
-        event.feature.getProperty('Name');
+        event.feature.getProperty("Name");
   });
   
 }
