@@ -42,7 +42,7 @@ function initialize() {
 
   // [START snippet]
   // Set mouseover event for each feature.
-  map.data.addListener('mouseover', function(event) {
+  map.data.addListener('click', function(event) {
     document.getElementById('info-box').textContent =
         event.feature.getProperty('Name');
   });
