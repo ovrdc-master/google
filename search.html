@@ -181,7 +181,19 @@ function initialize() {
   });
   
   // Load a GeoJSON from the same server.
-  map.data.loadGeoJson('cc-trails.json');
+  map.data.loadGeoJson('cc-trails.geojson');
+  
+  // global infowindow
+  var infowindow = new google.maps.InfoWindow();
+
+  // When the user clicks, open an infowindow
+  map.data.addListener('click', function(event) {
+      var myHTML = event.feature.getProperty("Description");
+      infowindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+      infowindow.setPosition(event.feature.getGeometry().get());
+      infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+      infowindow.open(map);
+  });
   
 }
 
