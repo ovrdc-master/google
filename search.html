@@ -62,6 +62,8 @@
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
 // pick list containing a mix of places and predicted search terms.
+//info window
+var infowindow = new google.maps.InfoWindow();
 
 function initialize() {
 
@@ -122,6 +124,10 @@ function initialize() {
   // Associate the styled map with the MapTypeId and set it to display.
   map.mapTypes.set('styled_maps', styledMapType);
   map.setMapTypeId('styled_maps');
+  google.maps.event.addListener(map,'click',function() {
+        infowindow.close();
+    });
+  
   
   // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
@@ -180,11 +186,6 @@ function initialize() {
     searchBox.setBounds(bounds);
   });
   
-  // Load a GeoJSON from the same server.
-  map.data.loadGeoJson('cc-trails.geojson');
-  
-
-
   // When the user clicks, open an infowindow
   map.data.addListener('click', function(event) {
       var myHTML = event.feature.getProperty("Name");
@@ -193,6 +194,9 @@ function initialize() {
       infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
       infowindow.open(map);
   });
+
+  // Load a GeoJSON from the same server.
+  map.data.loadGeoJson('cc-trails.geojson');
   
 }
 
