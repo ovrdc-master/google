@@ -50,6 +50,9 @@
         // Associate the styled map with the MapTypeId and set it to display.
         map.mapTypes.set('styled_maps', styledMapType);
         map.setMapTypeId('styled_maps');
+        
+        // Load a GeoJSON from the same server.
+        map.data.loadGeoJson('cctrails.gejson');
             
     }
       google.maps.event.addDomListener(window, 'load', initialize);
