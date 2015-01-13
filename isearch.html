@@ -84,62 +84,10 @@
 function initialize() {
 
   var markers = [];
-  var styles =   [
-    {
-      featureType: "all",
-      stylers: [
-        { saturation: -80 }
-      ]
-    },{
-      featureType: 'road.arterial',
-      elementType: 'geometry',
-      stylers: [
-        { hue: "#00ffee"},
-        { saturation: 50 }
-      ]
-    },{
-      featureType: 'road',
-      elementType: 'labels',
-      stylers: [
-        { visibility: 'on' }
-      ]
-    }
-  ];
-
-  // Create a new StyledMapType object, passing it the array of styles,
-  // as well as the name to be displayed on the map type control.
-  var styledMapType = new google.maps.StyledMapType(styles,
-    {name: 'Styled Map'});
-
-  // Create a map object, and include the MapTypeId to add
-  // to the map type control.
-  var mapOptions = {
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 14,
-    center: new google.maps.LatLng(39.6, -82.6),
-    overviewMapControl: true,
-    overviewMapControlOptions: {
-      opened: true,
-      position: google.maps.ControlPosition.TOP_RIGHT
-    },
-    zoomControl: true,
-    zoomControlOptions: {
-      style: google.maps.ZoomControlStyle.SMALL
-    },
-    panControl: false,
-    scaleControl: true,
-    
-    mapTypeControlOptions: {
-      mapTypeIds: [google.maps.MapTypeId.ROADMAP,
-        google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID,
-        google.maps.MapTypeId.TERRAIN, 'styled_maps']
-    }
-  };
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
-
-  // Associate the styled map with the MapTypeId and set it to display.
-  map.mapTypes.set('styled_maps', styledMapType);
-  map.setMapTypeId('styled_maps');
+    center: {lat: 39.6, lng: -82.6}
+  });
   
   // Load a GeoJSON from the same server.
   map.data.loadGeoJson('cc-trails.json');
