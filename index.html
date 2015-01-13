@@ -9,14 +9,49 @@
     </script>
     <script type="text/javascript">
       function initialize() {
+        //map styles
+        var styleArray = [
+          {
+            featureType: "all",
+            stylers: [
+              { saturation: -80 }
+            ]
+          },{
+            featureType: "road.arterial",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#00ffee" },
+              { saturation: 50 }
+            ]
+          },{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
+        // Create a new StyledMapType object, passing it the array of styles,
+        // as well as the name to be displayed on the map type control.
+        var styledMapType = new google.maps.StyledMapType(styles,
+          {name: 'Styled Map'});
+        
+        //Also having multiple maps in the control box at the top, notice the s at the end of Ids.
         var mapOptions = {
           center: { lat: -34.397, lng: 150.644},
           zoom: 8,
-          mapTypeId: google.maps.MapTypeId.TERRAIN
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP,
+            google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID,
+            google.maps.MapTypeId.TERRAIN, 'styled_maps']
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-      }
+        
+        // Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('styled_maps', styledMapType);
+        map.setMapTypeId('styled_maps');
+            
+    }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
