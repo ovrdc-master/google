@@ -9,6 +9,19 @@
         margin: 0px;
         padding: 0px
       }
+      
+      #info-box {
+      background-color: white;
+      border: 1px solid transparent;
+      border-radius: 2px 0 0 2px;
+      top: 12px;
+      height: 20px;
+      padding: 10px;
+      position: absolute;
+      right: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+      
       .controls {
         margin-top: 6px;
         border: 1px solid transparent;
@@ -181,6 +194,12 @@ function initialize() {
   
     // Load a GeoJSON from the same server.
   map.data.loadGeoJson('cc-trails.geojson');
+  
+    // Set mouseover event for each feature.
+  map.data.addListener('click', function(event) {
+    document.getElementById('info-box').textContent =
+        event.feature.getProperty('Name');
+  });
   
 }
 
